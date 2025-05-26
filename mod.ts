@@ -2,7 +2,12 @@ import { createOAuthHttpClient } from "../mcp/utils/httpClient.ts";
 import manifest, { Manifest } from "./manifest.gen.ts";
 import type { FnContext } from "@deco/deco";
 import { McpContext } from "../mcp/context.ts";
-import { API_URL, OAUTH_URL } from "./utils/constant.ts";
+import {
+  API_URL,
+  OAUTH_URL,
+  OAUTH_URL_AUTH,
+  SCOPES,
+} from "./utils/constant.ts";
 import { AuthClient, Client } from "./utils/client.ts";
 import {
   DEFAULT_OAUTH_HEADERS,
@@ -14,9 +19,9 @@ import {
 
 export const GoogleProvider: OAuthProvider = {
   name: "Google",
-  authUrl: "https://accounts.google.com/o/oauth2/v2/auth",
-  tokenUrl: "https://oauth2.googleapis.com",
-  scopes: ["https://www.googleapis.com/auth/spreadsheets"],
+  authUrl: OAUTH_URL_AUTH,
+  tokenUrl: OAUTH_URL,
+  scopes: SCOPES,
   clientId: "",
   clientSecret: "",
 };
@@ -34,10 +39,10 @@ export interface State extends Props {
 export type AppContext = FnContext<State & McpContext<Props>, Manifest>;
 
 /**
- * @title Google Sheets
- * @description Integração com Google Sheets usando OAuth 2.0 com refresh automático de tokens
+ * @title Google Gmail
+ * @description Integração com Google Gmail usando OAuth 2.0 com refresh automático de tokens
  * @category Produtividade
- * @logo https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Google_Sheets_logo_%282014-2020%29.svg/1498px-Google_Sheets_logo_%282014-2020%29.svg.png
+ * @logo https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Gmail_icon_%282020%29.svg/1024px-Gmail_icon_%282020%29.svg.png
  */
 export default function App(
   props: Props,
@@ -62,7 +67,7 @@ export default function App(
     },
   };
 
-  const client = createOAuthHttpClient<AppContext, AuthClient>({
+  const client = createOAuthHttpClient<Client, AuthClient>({
     provider: googleProvider,
     apiBaseUrl: API_URL,
     tokens,

@@ -1,6 +1,4 @@
-import {
-  Example,
-} from "./types.ts";
+import { EmailMessage, EmailsResponse, Example } from "./types.ts";
 
 export interface AuthClient {
   "POST /token": {
@@ -43,6 +41,34 @@ export interface Client {
           title: string;
         };
       }[];
+    };
+  };
+  "GET /gmail/v1/users/:userId/messages": {
+    response: EmailsResponse;
+    searchParams: {
+      q?: string;
+      labelIds?: string;
+      includeSpamTrash?: boolean;
+      maxResults?: number;
+      pageToken?: string;
+    };
+  };
+  "GET /gmail/v1/users/:userId/messages/:id": {
+    response: EmailMessage;
+    searchParams: {
+      format?: string;
+      metadataHeaders?: string;
+    };
+  };
+  "POST /gmail/v1/users/:userId/messages/send": {
+    response: {
+      id: string;
+      threadId: string;
+      labelIds: string[];
+    };
+    body: {
+      raw: string;
+      threadId?: string;
     };
   };
 }

@@ -3,16 +3,22 @@
 // This file is automatically updated during development when running `dev.ts`.
 
 import * as $$$$$$$$$0 from "./actions/oauth/callback.ts";
-import * as $$$0 from "./loaders/oauth/start.ts";
+import * as $$$$$$$$$1 from "./actions/sendEmail.ts";
+import * as $$$0 from "./loaders/getEmail.ts";
+import * as $$$1 from "./loaders/getEmails.ts";
+import * as $$$2 from "./loaders/oauth/start.ts";
 
 const manifest = {
   "loaders": {
-    "mcp-oauth-template/loaders/oauth/start.ts": $$$0,
+    "google-gmail/loaders/getEmail.ts": $$$0,
+    "google-gmail/loaders/getEmails.ts": $$$1,
+    "google-gmail/loaders/oauth/start.ts": $$$2,
   },
   "actions": {
-    "mcp-oauth-template/actions/oauth/callback.ts": $$$$$$$$$0,
+    "google-gmail/actions/oauth/callback.ts": $$$$$$$$$0,
+    "google-gmail/actions/sendEmail.ts": $$$$$$$$$1,
   },
-  "name": "mcp-oauth-template",
+  "name": "google-gmail",
   "baseUrl": import.meta.url,
 };
 
