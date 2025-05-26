@@ -2,23 +2,17 @@
 // This file SHOULD be checked into source version control.
 // This file is automatically updated during development when running `dev.ts`.
 
-import * as $$$$$$$$$2 from "./actions/oauth/callback.ts";;
-import * as $$$3 from "./loaders/oauth/start.ts";
+import * as $$$$$$$$$0 from "./actions/oauth/callback.ts";
+import * as $$$0 from "./loaders/oauth/start.ts";
 
 const manifest = {
   "loaders": {
-    "google-sheets/loaders/getBatchValues.ts": $$$0,
-    "google-sheets/loaders/getSpreadsheet.ts": $$$1,
-    "google-sheets/loaders/getValues.ts": $$$2,
-    "google-sheets/loaders/oauth/start.ts": $$$3,
+    "mcp-oauth-template/loaders/oauth/start.ts": $$$0,
   },
   "actions": {
-    "google-sheets/actions/batchUpdateValues.ts": $$$$$$$$$0,
-    "google-sheets/actions/createSpreadsheet.ts": $$$$$$$$$1,
-    "google-sheets/actions/oauth/callback.ts": $$$$$$$$$2,
-    "google-sheets/actions/updateValues.ts": $$$$$$$$$3,
+    "mcp-oauth-template/actions/oauth/callback.ts": $$$$$$$$$0,
   },
-  "name": "google-sheets",
+  "name": "mcp-oauth-template",
   "baseUrl": import.meta.url,
 };
 

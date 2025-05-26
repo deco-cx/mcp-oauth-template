@@ -1,3 +1,5 @@
+import { OAUTH_URL_AUTH, SCOPES } from "../../utils/constant";
+
 export interface Props {
   clientId: string;
   redirectUri: string;
@@ -14,14 +16,13 @@ export default function start(props: Props) {
     client_id: props.clientId,
     redirect_uri: props.redirectUri,
     response_type: "code",
-    scope: "https://www.googleapis.com/auth/spreadsheets",
+    scope: SCOPES,
     access_type: "offline",
     prompt: "consent",
     state: props.state,
   });
 
-  const authorizationUrl =
-    `https://accounts.google.com/o/oauth2/v2/auth?${authParams.toString()}`;
+  const authorizationUrl = `${OAUTH_URL_AUTH}?${authParams.toString()}`
 
   return Response.redirect(authorizationUrl);
 }
